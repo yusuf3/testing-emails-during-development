@@ -16,8 +16,8 @@ $app->get('/', function(Request $request) use($app) {
     // Create a message
     $message = Swift_Message::newInstance('Wonderful Subject')
         ->setFrom(array('john@doe.com' => 'John Doe'))
-        ->setTo(array('receiver@domain.org'))
-        ->setBody('Here is the message itself');
+        ->setTo(array('myreceiver@domain.org'))
+        ->setBody('Here is the my message');
 
     // Send the message
     $mailer->send($message);

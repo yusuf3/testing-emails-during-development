@@ -1,0 +1,33 @@
+version: '3'
+
+services:
+
+  nginx:
+      build: docker/nginx
+      ports:
+          - 8080:80
+      volumes:
+        - .:/src
+      networks:
+          - backend-tier
+      depends_on:
+          - php
+
+  php:
+      image: php:7.1-fpm
+      expose:
+          - 9000
+      volumes:
+          - .:/src
+      networks:
+          backend-tier:
+            aliases:
+              - my_php
+
+volumes:
+  composer-data:
+    driver: local
+
+networks:
+  backend-tier:
+    driver: bridge

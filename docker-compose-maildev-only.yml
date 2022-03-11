@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  fakesmtp:
+      image: djfarrelly/maildev
+      ports:
+        - 1025:25
+        - 1080:80
+      networks:
+        zurich-api_zurich-express-api-network:
+          aliases:
+            - my_fakesmtp
+
+networks:
+  zurich-api_zurich-express-api-network:
+    driver: bridge
